@@ -1,0 +1,19 @@
+body {
+
+    background: black;
+    font-family: 'Orbitron', sans-serif; 
+    color: whitesmoke;
+
+}
+
+#home-link {
+
+    text-decoration: none; 
+    color: whitesmoke; 
+}
+
+.lower-element {
+
+    margin-top: 200px;
+
+}
