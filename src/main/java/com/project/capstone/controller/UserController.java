@@ -2,8 +2,10 @@ package com.project.capstone.controller;
 
 import com.project.capstone.dto.UserDTO;
 import com.project.capstone.model.Message;
+import com.project.capstone.model.Mix;
 import com.project.capstone.model.User;
 import com.project.capstone.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -50,7 +52,10 @@ public class UserController {
 //    }
 
     @RequestMapping("/user-home")
-    public String processUserLogin(Model model) {
+    public String processUserLogin(Model model, HttpServletRequest request) {
+        if (request.isUserInRole("ROLE_ADMIN")){
+            return "redirect:/page-admin";
+        }
         return "redirect:/main-account";
     }
 
@@ -84,5 +89,15 @@ public class UserController {
     public String messageScreen(Model model) {
         model.addAttribute("message", new Message());
         return "HTML-JS-SBA/message";
+    }
+
+    @RequestMapping("/page-admin")
+    public String getAdminPage(){
+        return "HTML-JS-SBA/admin-page";
+    }
+    @RequestMapping("/post-mix")
+    public String uploadMix(Model model) {
+        model.addAttribute("mix", new Mix());
+        return "HTML-JS-SBA/mix-page";
     }
 }

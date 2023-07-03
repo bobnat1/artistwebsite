@@ -38,7 +38,9 @@ public class SecurityConfig {
                         (auth) -> auth
                                 .requestMatchers("/", "/process-user", "/dj-contact", "/dj-mix", "/styles/**", "/js/**", "/video/**", "/audio/**", "/images/**", "/register-user").permitAll()
                                 .requestMatchers("/student-info","/main-account", "/messages", "/message-dj")
-                                .hasRole("USER").anyRequest().authenticated())
+                                .hasRole("USER")
+                                .requestMatchers("/page-admin", "/post-mix", "/message-dj", "/messages")
+                                .hasRole("ADMIN").anyRequest().authenticated())
                 .formLogin(
                         form -> form
                                 .loginPage("/login-user")
