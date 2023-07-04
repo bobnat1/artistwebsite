@@ -12,5 +12,5 @@ public class CapstoneApplication {
 
 }
 
-/*TODO  messaging service, fix placeholder after message sends, mix model use string with path to music file,
+/*TODO mix model use string with path to music file,
 *  add mobile view, JUNIT tests, add delete and update method for admin for users and to promote users */

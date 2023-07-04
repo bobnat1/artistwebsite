@@ -23,7 +23,7 @@ public class MessageController {
     public String sendMessage(@ModelAttribute (name = "message") Message message) {
 
         messageRepository.save(message);
-        return "redirect:/main-account";
+        return "redirect:/confirm-message";
 
     }
 

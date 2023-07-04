@@ -100,4 +100,9 @@ public class UserController {
         model.addAttribute("mix", new Mix());
         return "HTML-JS-SBA/mix-page";
     }
+
+    @RequestMapping("/confirm-message")
+    public String confirmMessage() {
+        return "HTML-JS-SBA/message-confirmation";
+    }
 }
