@@ -63,6 +63,17 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public Iterable<User> getAllUsers() {
+        Iterable<User> userList = userRepository.findAll();
+        return userList;
+    }
+
+    @Override
+    public void changeRoles(int userId, int newRoleId) {
+        userRepository.changeUsersRole(userId, newRoleId);
+    }
+
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<UserRole> userRoles) {
 
         Collection<? extends GrantedAuthority> mapRoles = userRoles.stream().map(

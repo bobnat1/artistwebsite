@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -105,4 +107,18 @@ public class UserController {
     public String confirmMessage() {
         return "HTML-JS-SBA/message-confirmation";
     }
+
+    @RequestMapping("/user-edit")
+    public String editUsers(Model model) {
+        Iterable<User> userList = userService.getAllUsers();
+        model.addAttribute("users", userList);
+        return "HTML-JS-SBA/edit-users";
+    }
+
+    @RequestMapping("/change-role")
+    public String processChange(@RequestParam("userId") Integer userId, @RequestParam("newRole") Integer newRole) {
+        userService.changeRoles(userId, newRole);
+        return "redirect:/page-admin";
+    }
+
 }

@@ -13,4 +13,8 @@ public interface UserService extends UserDetailsService {
     public void saveUser(UserDTO user);
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+
+    public Iterable<User> getAllUsers();
+
+    public void changeRoles(int userId, int newRoleId);
 }
