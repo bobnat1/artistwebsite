@@ -17,4 +17,6 @@ public interface UserService extends UserDetailsService {
     public Iterable<User> getAllUsers();
 
     public void changeRoles(int userId, int newRoleId);
+
+    public void deleteUser(int userId);
 }

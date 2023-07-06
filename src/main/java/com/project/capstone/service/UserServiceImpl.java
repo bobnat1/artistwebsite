@@ -74,6 +74,11 @@ public class UserServiceImpl implements UserService {
         userRepository.changeUsersRole(userId, newRoleId);
     }
 
+    @Override
+    public void deleteUser(int userId) {
+        userRepository.removeUser(userId);
+    }
+
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<UserRole> userRoles) {
 
         Collection<? extends GrantedAuthority> mapRoles = userRoles.stream().map(

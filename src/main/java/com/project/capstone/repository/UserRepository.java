@@ -17,4 +17,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Query(value = "UPDATE user_roles SET role_id = ?2 WHERE user_id = ?1", nativeQuery = true)
     public int changeUsersRole(Integer userId, Integer newRoleId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM user WHERE id = ?1", nativeQuery = true)
+    public int removeUser(Integer userId);
 }

@@ -87,21 +87,13 @@ public class UserController {
         return "HTML-JS-SBA/offthetop";
     }
 
-    @RequestMapping("/message-dj")
-    public String messageScreen(Model model) {
-        model.addAttribute("message", new Message());
-        return "HTML-JS-SBA/message";
-    }
+
 
     @RequestMapping("/page-admin")
     public String getAdminPage(){
         return "HTML-JS-SBA/admin-page";
     }
-    @RequestMapping("/post-mix")
-    public String uploadMix(Model model) {
-        model.addAttribute("mix", new Mix());
-        return "HTML-JS-SBA/mix-page";
-    }
+
 
     @RequestMapping("/confirm-message")
     public String confirmMessage() {

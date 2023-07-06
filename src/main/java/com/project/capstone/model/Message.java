@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Entity
@@ -18,11 +19,10 @@ public class Message {
     private int id;
     private String body;
     private String recipient;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_messages",
-            joinColumns = @JoinColumn(name = "message_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Collection<User> user;
+    private String email;
+    private LocalDateTime time;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "user_email", referencedColumnName = "email")
+//    private User user;
 
 }
