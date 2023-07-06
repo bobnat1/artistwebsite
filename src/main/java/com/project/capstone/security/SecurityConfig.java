@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 .requestMatchers("/", "/process-user", "/dj-contact", "/dj-mix", "/styles/**", "/js/**", "/video/**", "/audio/**", "/images/**", "/register-user").permitAll()
                                 .requestMatchers("/student-info","/main-account", "/messages", "/message-dj", "/confirm-message")
                                 .hasRole("USER")
-                                .requestMatchers("/page-admin", "/post-mix", "/delete-mix", "/send-mix", "/message-dj", "/messages", "/confirm-message", "/user-edit", "/change-role", "/message-edit")
+                                .requestMatchers("/page-admin", "/post-mix", "/delete-mix", "/send-mix", "/message-dj", "/messages", "/confirm-message", "/user-edit", "/change-role", "/message-edit", "/message-delete")
                                 .hasRole("ADMIN").anyRequest().authenticated())
                 .formLogin(
                         form -> form

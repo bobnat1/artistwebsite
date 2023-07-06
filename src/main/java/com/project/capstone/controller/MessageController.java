@@ -45,6 +45,12 @@ public class MessageController {
         return "HTML-JS-SBA/edit-messages";
     }
 
+    @RequestMapping("/message-delete")
+    public String processChange(@RequestParam("messageId") Integer messageId) {
+        messageRepository.deleteById(messageId);
+        return "redirect:/message-edit";
+    }
+
     @GetMapping("/{recipient}")
     public List<Message> getMessagesByRecipient(@PathVariable String recipient) {
         return messageRepository.findMessageByRecipient(recipient);

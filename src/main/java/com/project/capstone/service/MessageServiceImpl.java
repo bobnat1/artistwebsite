@@ -31,4 +31,9 @@ public class MessageServiceImpl implements MessageService{
         messageRepository.deleteAll();
 
     }
+
+    public void deleteMessage(int messageId) {
+
+        messageRepository.deleteById(messageId);
+    }
 }
