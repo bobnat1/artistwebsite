@@ -21,8 +21,6 @@ public class Message {
     private String recipient;
     private String email;
     private LocalDateTime time;
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_email", referencedColumnName = "email")
-//    private User user;
+
 
 }
