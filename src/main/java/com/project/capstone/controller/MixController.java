@@ -3,18 +3,20 @@ import com.project.capstone.model.Mix;
 import com.project.capstone.repository.MixRepository;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 
 @Controller
@@ -66,5 +68,46 @@ public class MixController {
     public String deleteMix(@RequestParam("mixName") String mixName) {
         mixRepository.delete(mixRepository.findMixByMixName(mixName));
         return "redirect:/post-mix";
+    }
+
+    @GetMapping("/download-mix/{mixId}")
+    public ResponseEntity<Resource> downloadMix(@PathVariable int mixId) throws IOException {
+        // Retrieve the Mix object from the database
+        Mix mix = mixRepository.findById(mixId).orElseThrow(() -> new FileNotFoundException("Mix not found"));
+
+        // Check if the user is authorized to download the mix
+        // Implement your authorization logic here
+
+        // Retrieve the file path from the Mix object
+        String filePath = mix.getPath();
+
+        // Create a Resource object from the file path
+        Resource fileResource = new FileSystemResource(filePath);
+
+        // Check if the file exists
+        if (!fileResource.exists()) {
+            throw new FileNotFoundException("File not found: " + filePath);
+        }
+
+        // Set the appropriate content type
+        String contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+        try {
+            contentType = Files.probeContentType(fileResource.getFile().toPath());
+        } catch (IOException e) {
+            // Handle the exception or use a default content type
+        }
+
+        // Return the file as a ResponseEntity
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileResource.getFilename() + "\"")
+                .body(fileResource);
+    }
+
+    @RequestMapping("/main-account")
+    public String userMainAccountPage(Model model) {
+        Iterable<Mix> mixes = mixRepository.findAll();
+        model.addAttribute("mixes", mixes);
+        return "HTML-JS-SBA/account-main";
     }
 }

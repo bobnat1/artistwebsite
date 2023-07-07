@@ -51,8 +51,4 @@ public class MessageController {
         return "redirect:/message-edit";
     }
 
-    @GetMapping("/{recipient}")
-    public List<Message> getMessagesByRecipient(@PathVariable String recipient) {
-        return messageRepository.findMessageByRecipient(recipient);
-    }
 }

@@ -43,16 +43,6 @@ public class UserController {
         else
             return "HTML-JS-SBA/loginregister";
     }
-
-//    @GetMapping("/main-account")
-//    public String mainAccount(Model model, Authentication authentication) {
-//
-//        User user = userService.findUserByEmail(authentication.getName());
-//        model.addAttribute("user", user);
-//
-//        return "account-main";
-//    }
-
     @RequestMapping("/user-home")
     public String processUserLogin(Model model, HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")){
@@ -60,21 +50,14 @@ public class UserController {
         }
         return "redirect:/main-account";
     }
-
     @GetMapping("/register-user")
     public String getLoginPage(Model model) {
         model.addAttribute("user", new UserDTO());
         return "HTML-JS-SBA/loginregister";
     }
-
     @RequestMapping("/login-user")
     public String loginUser() {
         return "HTML-JS-SBA/login";
-    }
-
-    @RequestMapping("/main-account")
-    public String userMainAccountPage() {
-        return "HTML-JS-SBA/account-main";
     }
 
     @RequestMapping("/dj-contact")
@@ -87,13 +70,10 @@ public class UserController {
         return "HTML-JS-SBA/offthetop";
     }
 
-
-
     @RequestMapping("/page-admin")
     public String getAdminPage(){
         return "HTML-JS-SBA/admin-page";
     }
-
 
     @RequestMapping("/confirm-message")
     public String confirmMessage() {
@@ -106,7 +86,6 @@ public class UserController {
         model.addAttribute("users", userList);
         return "HTML-JS-SBA/edit-users";
     }
-
     @RequestMapping("/change-role")
     public String processChange(@RequestParam("userId") Integer userId, @RequestParam("newRole") Integer newRole) {
         userService.changeRoles(userId, newRole);

@@ -37,7 +37,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(
                         (auth) -> auth
                                 .requestMatchers("/", "/process-user", "/dj-contact", "/dj-mix", "/styles/**", "/js/**", "/video/**", "/audio/**", "/images/**", "/register-user").permitAll()
-                                .requestMatchers("/student-info","/main-account", "/messages", "/message-dj", "/confirm-message")
+                                .requestMatchers("/student-info","/main-account", "/messages", "/message-dj", "/confirm-message", "/download-mix/**")
                                 .hasRole("USER")
                                 .requestMatchers("/page-admin", "/post-mix", "/delete-mix", "/send-mix", "/message-dj", "/messages", "/confirm-message", "/user-edit", "/change-role", "/message-edit", "/message-delete")
                                 .hasRole("ADMIN").anyRequest().authenticated())

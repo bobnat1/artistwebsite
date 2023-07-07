@@ -12,5 +12,5 @@ public class CapstoneApplication {
 
 }
 
-/*TODO mix model use string with path to music file, track users who download the mix, add redirect: paths for controller, JS on role confirm?
-*  add mobile view, JUNIT tests, add delete and update method for admin for users, update password */
+/*TODO  add redirect: paths for controller, JS on role confirm?
+*  add mobile view, JUNIT tests, update password */
