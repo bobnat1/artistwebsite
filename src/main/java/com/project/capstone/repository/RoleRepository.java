@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface RoleRepository extends CrudRepository<UserRole, Integer> {
 
     public UserRole findRoleByUserRole(String role);
+
+
 }
