@@ -11,7 +11,7 @@ public class CapstoneApplication {
 	}
 
 }
-//TODO -before submission- JUnit Test, Off The Top MixCloud API & Page customization, logging
+//TODO -before submission- JUnit Test, logging
 
 /*TODO -later date- add redirect: paths for controller, JS on role confirm?
 *  add mobile view, JUNIT tests, update password */

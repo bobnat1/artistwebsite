@@ -14,8 +14,8 @@ body{
 
 #oft {
 
-    width:600px;
-    height:600px;
+    max-width: 100%;
+    height:auto;
 
 }
 
@@ -27,7 +27,7 @@ body{
 
 .lowest-element {
 
-    margin-top: 400px;
+    padding-top: 20px;
 
 }
 
@@ -59,6 +59,10 @@ body{
 
     .heading {
         font-size: 90%;
+    }
+
+    html, body {
+        overflow-x: hidden;
     }
 
 }

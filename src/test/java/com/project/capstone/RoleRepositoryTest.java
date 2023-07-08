@@ -1,22 +1,20 @@
 package com.project.capstone;
 
-import com.project.capstone.repository.UserRepository;
+
+import com.project.capstone.repository.RoleRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class UserRepositoryTest {
+public class RoleRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
-
-
+    RoleRepository roleRepository;
 
     @Test
-    public void changeUserRoleTest() {
-        Assertions.assertDoesNotThrow(() -> userRepository.changeUsersRole(1,2));
-
+    public void findRoleByUserRoleTest() {
+        Assertions.assertDoesNotThrow(() -> roleRepository.findRoleByUserRole("ROLE_ADMIN"));
     }
 }
