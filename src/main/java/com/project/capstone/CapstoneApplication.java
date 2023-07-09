@@ -11,7 +11,7 @@ public class CapstoneApplication {
 	}
 
 }
-//TODO -before submission- JUnit Test, logging
+//TODO -before submission- logging, readme, initialsetupdemo, comments
 
 /*TODO -later date- add redirect: paths for controller, JS on role confirm?
-*  add mobile view, JUNIT tests, update password */
+*  add mobile view, error handling for front end, update password, email verification */

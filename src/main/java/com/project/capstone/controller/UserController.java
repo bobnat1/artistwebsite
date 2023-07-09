@@ -92,4 +92,10 @@ public class UserController {
         return "redirect:/page-admin";
     }
 
+    @RequestMapping("/user-delete")
+    public String deleteUsers(@RequestParam("userId") Integer userId) {
+        userService.deleteUser(userId);
+        return "redirect:/user-edit";
+    }
+
 }

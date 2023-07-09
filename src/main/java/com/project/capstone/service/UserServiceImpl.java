@@ -76,6 +76,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(int userId) {
+        userRepository.deleteUserFromUserRole(userId);
         userRepository.removeUser(userId);
     }
 
