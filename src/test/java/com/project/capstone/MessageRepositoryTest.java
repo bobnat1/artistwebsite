@@ -13,6 +13,7 @@ public class MessageRepositoryTest {
     @Autowired
     MessageRepository messageRepository;
 
+    //test finds message by the user's email who sent it
     @Test
     public void findMessageByEmailTest() {
         Message message = new Message();

@@ -13,6 +13,7 @@ public class RoleRepositoryTest {
     @Autowired
     RoleRepository roleRepository;
 
+    //test finds role name in UserRole database by role name
     @Test
     public void findRoleByUserRoleTest() {
         Assertions.assertDoesNotThrow(() -> roleRepository.findRoleByUserRole("ROLE_ADMIN"));

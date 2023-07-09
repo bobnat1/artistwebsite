@@ -14,6 +14,7 @@ public class MixRepositoryTest {
     @Autowired
     MixRepository mixRepository;
 
+    //test finds mix object by mixName
     @Test
     public void findMixByMixNameTest() {
         Mix mix = new Mix();
