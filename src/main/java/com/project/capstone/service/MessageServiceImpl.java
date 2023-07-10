@@ -21,17 +21,20 @@ public class MessageServiceImpl implements MessageService{
         this.roleService = roleService;
     }
 
+    // saves message into database, currently not in use
     @Override
     public void saveMessage(Message message) {
 
     }
 
+    // deletes all messages in database
     public void deleteAllMessages() {
 
         messageRepository.deleteAll();
 
     }
 
+    // deletes message by id in database
     public void deleteMessage(int messageId) {
 
         messageRepository.deleteById(messageId);

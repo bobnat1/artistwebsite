@@ -1,5 +1,7 @@
 package com.project.capstone.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.project.capstone.dto.UserDTO;
 import com.project.capstone.model.User;
 import com.project.capstone.model.UserRole;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private UserRepository userRepository;
 
     private BCryptPasswordEncoder encoder;
@@ -36,12 +39,14 @@ public class UserServiceImpl implements UserService {
         this.roleService = roleService;
     }
 
+    // finds user by email in database
     @Override
     public User findUserByEmail(String email) {
 
         return userRepository.findUserByEmail(email);
     }
 
+    // saves new user into database
     @Override
     public void saveUser(UserDTO userDTO) {
 
@@ -52,8 +57,10 @@ public class UserServiceImpl implements UserService {
         user.setUserRoles(Arrays.asList(roleService.findRoleByName("ROLE_USER")));
 
         userRepository.save(user);
+        logger.info("User with email " + user.getEmail() + " has signed up");
     }
 
+    // finds user email in database for authentication
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -63,23 +70,27 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    // gets all current users in database
     @Override
     public Iterable<User> getAllUsers() {
         Iterable<User> userList = userRepository.findAll();
         return userList;
     }
 
+    // changes user's role
     @Override
     public void changeRoles(int userId, int newRoleId) {
         userRepository.changeUsersRole(userId, newRoleId);
     }
 
+    // deletes user from database
     @Override
     public void deleteUser(int userId) {
         userRepository.deleteUserFromUserRole(userId);
         userRepository.removeUser(userId);
     }
 
+    // maps user roles for authentication purposes
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<UserRole> userRoles) {
 
         Collection<? extends GrantedAuthority> mapRoles = userRoles.stream().map(

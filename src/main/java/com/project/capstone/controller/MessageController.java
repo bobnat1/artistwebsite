@@ -21,11 +21,17 @@ public class MessageController {
         this.messageRepository = messageRepository;
     }
 
+    // Brings Authenticated user to message page, loads message object to be saved in later request
     @RequestMapping("/message-dj")
     public String messageScreen(Model model) {
         model.addAttribute("message", new Message());
         return "HTML-JS-SBA/message";
     }
+
+    /*
+    When requested, this method takes the Authenticated user's email and saves it to the message object along with the
+    message body and finally saves the message to the database
+     */
     @PostMapping("/messages")
     public String sendMessage(@ModelAttribute (name = "message") Message message, Authentication authentication) {
         String email = authentication.getName();
@@ -38,6 +44,7 @@ public class MessageController {
 
     }
 
+    // Brings User role Admin to message management page, loads messages in database for later requests
     @RequestMapping("/message-edit")
     public String checkMessages(Model model){
         Iterable<Message> messages = messageRepository.findAll();
@@ -45,6 +52,7 @@ public class MessageController {
         return "HTML-JS-SBA/edit-messages";
     }
 
+    // When requested, the message object is deleted from the database
     @RequestMapping("/message-delete")
     public String processChange(@RequestParam("messageId") Integer messageId) {
         messageRepository.deleteById(messageId);

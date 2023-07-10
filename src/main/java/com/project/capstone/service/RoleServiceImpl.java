@@ -15,6 +15,7 @@ public class RoleServiceImpl implements RoleService {
         this.roleRepository = roleRepository;
     }
 
+    // finds role by role name in database
     @Override
     public UserRole findRoleByName(String roleName) {
         return roleRepository.findRoleByUserRole(roleName);

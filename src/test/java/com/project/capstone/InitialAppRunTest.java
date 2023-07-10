@@ -24,7 +24,6 @@ public class InitialAppRunTest {
 
     *Changing initial User Account to Admin*
     Step 1: Comment out setRolesInRepositoryTest and uncomment changeUserRoleTest then run InitialAppRunTest again
-    Step 1:
 
      */
 
@@ -36,9 +35,9 @@ public class InitialAppRunTest {
 
     }
 
-    @Test
-    public void changeUserRoleTest() {
-
-        userRepository.changeUsersRole(1, 2);
-    }
+//    @Test
+//    public void changeUserRoleTest() {
+//
+//        userRepository.changeUsersRole(1, 2);
+//    }
 }

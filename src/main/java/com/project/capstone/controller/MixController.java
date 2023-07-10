@@ -34,7 +34,7 @@ public class MixController {
 
 
 
-
+    // Brings User role Admin to the mix management page, also posts current mixes in database for future requests
     @RequestMapping("/post-mix")
     public String uploadMix(Model model) {
         model.addAttribute("mix", new Mix());
@@ -42,6 +42,11 @@ public class MixController {
         model.addAttribute("mixes", mixes);
         return "HTML-JS-SBA/mix-page";
     }
+
+    /*
+    When request is called, it processes the file uploaded, creates a path String, creates directory if not already created,
+    then it saves the path to the Mix object and saves the object to the database
+     */
     @PostMapping("/send-mix")
     public String uploadMix(@ModelAttribute (name = "mix") Mix mix, @RequestParam("mp3File")MultipartFile file, @RequestParam("mixName") String mixName) throws IOException {
 
@@ -64,19 +69,18 @@ public class MixController {
 
     }
 
+    // When request is called it deletes mix from database
     @RequestMapping("/delete-mix")
     public String deleteMix(@RequestParam("mixName") String mixName) {
         mixRepository.delete(mixRepository.findMixByMixName(mixName));
         return "redirect:/post-mix";
     }
 
+    // When request is called it downloads mix mp3 file from file system using path provided by Mix model
     @GetMapping("/download-mix/{mixId}")
     public ResponseEntity<Resource> downloadMix(@PathVariable int mixId) throws IOException {
         // Retrieve the Mix object from the database
         Mix mix = mixRepository.findById(mixId).orElseThrow(() -> new FileNotFoundException("Mix not found"));
-
-        // Check if the user is authorized to download the mix
-        // Implement your authorization logic here
 
         // Retrieve the file path from the Mix object
         String filePath = mix.getPath();
@@ -104,6 +108,7 @@ public class MixController {
                 .body(fileResource);
     }
 
+    // Brings Authenticated user to their home page, and posts current mixes saves to database for user to download
     @RequestMapping("/main-account")
     public String userMainAccountPage(Model model) {
         Iterable<Mix> mixes = mixRepository.findAll();

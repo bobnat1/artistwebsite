@@ -22,12 +22,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // Brings user to main page of website
     @GetMapping("/")
     public String frontPage() {
 
         return "HTML-JS-SBA/index";
     }
 
+    // Submits user registrations and saves to database
     @PostMapping("/process-user")
     public String loginRegister(@Valid @ModelAttribute (name = "user") UserDTO userDTO, BindingResult bindingResult) {
 
@@ -43,6 +45,8 @@ public class UserController {
         else
             return "HTML-JS-SBA/loginregister";
     }
+
+    // Brings user to authenticated User role's home page
     @RequestMapping("/user-home")
     public String processUserLogin(Model model, HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")){
@@ -50,48 +54,60 @@ public class UserController {
         }
         return "redirect:/main-account";
     }
+
+    // Brings user to register at registration page, loads UserDTO model on page
     @GetMapping("/register-user")
     public String getLoginPage(Model model) {
         model.addAttribute("user", new UserDTO());
         return "HTML-JS-SBA/loginregister";
     }
+
+    // Brings user to the login page
     @RequestMapping("/login-user")
     public String loginUser() {
         return "HTML-JS-SBA/login";
     }
 
+    // Brings user to the contact page
     @RequestMapping("/dj-contact")
     public String djContactPage() {
         return "HTML-JS-SBA/contact";
     }
 
+    // Brings user to the page with mixes posted
     @RequestMapping("/dj-mix")
     public String djMixPage() {
         return "HTML-JS-SBA/offthetop";
     }
 
+    // Brings User role Admin to the admin home page
     @RequestMapping("/page-admin")
     public String getAdminPage(){
         return "HTML-JS-SBA/admin-page";
     }
 
+    // Brings user to message sent confirmation page
     @RequestMapping("/confirm-message")
     public String confirmMessage() {
         return "HTML-JS-SBA/message-confirmation";
     }
 
+    // Brings User role Admin to user management page
     @RequestMapping("/user-edit")
     public String editUsers(Model model) {
         Iterable<User> userList = userService.getAllUsers();
         model.addAttribute("users", userList);
         return "HTML-JS-SBA/edit-users";
     }
+
+    // On user-edit page if Admin changes user role then this will process that request
     @RequestMapping("/change-role")
     public String processChange(@RequestParam("userId") Integer userId, @RequestParam("newRole") Integer newRole) {
         userService.changeRoles(userId, newRole);
         return "redirect:/page-admin";
     }
 
+    // On ussr-edit page if Admin deletes user then this will process that request
     @RequestMapping("/user-delete")
     public String deleteUsers(@RequestParam("userId") Integer userId) {
         userService.deleteUser(userId);
