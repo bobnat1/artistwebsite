@@ -31,10 +31,17 @@ public class UserController {
 
     // Submits user registrations and saves to database
     @PostMapping("/process-user")
-    public String loginRegister(@Valid @ModelAttribute (name = "user") UserDTO userDTO, BindingResult bindingResult) {
+    public String loginRegister(@Valid @ModelAttribute (name = "user") UserDTO userDTO, BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors()){
             return "HTML/loginregister";
+        }
+
+        if (userService.findUserByEmail(userDTO.getEmail()) != null){
+
+            model.addAttribute("errorMsg", "This email is already in use");
+            return "HTML/loginregister";
+
         }
 
         if (userService.findUserByEmail(userDTO.getEmail()) == null){
@@ -65,6 +72,13 @@ public class UserController {
     // Brings user to the login page
     @RequestMapping("/login-user")
     public String loginUser() {
+        return "HTML/login";
+    }
+
+    // shows user error on login page
+    @RequestMapping("/error-login")
+    public String loginError(Model model) {
+        model.addAttribute("error", "Invalid email and/or password.");
         return "HTML/login";
     }
 

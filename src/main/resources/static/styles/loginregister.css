@@ -17,3 +17,11 @@ body {
     margin-top: 200px;
 
 }
+
+.error-message {
+        background-color: black;
+        color: #f60000;
+        border: none;
+        padding: 10px;
+        margin-bottom: 10px;
+}

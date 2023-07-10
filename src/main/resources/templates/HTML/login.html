@@ -41,6 +41,11 @@
             <input type="submit" value="submit">
         </form>
 
+          <br>
+          <di th:if="${error}" class="error-message">
+              <p><span th:text="${error}"></span></p>
+          </di>
+
       </div>
   </div>
 

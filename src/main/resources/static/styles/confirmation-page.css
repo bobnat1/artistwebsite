@@ -17,3 +17,11 @@ body{
     margin-top: 200px;
 
 }
+
+.error-message {
+        background-color: black; /* Set the desired background color */
+        color: #f60000; /* Set the desired text color */
+        border: none; /* Set the desired border color */
+        padding: 10px; /* Adjust the padding as needed */
+        margin-bottom: 10px; /* Adjust the margin as needed */
+}
