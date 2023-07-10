@@ -40,7 +40,7 @@ public class MixController {
         model.addAttribute("mix", new Mix());
         Iterable<Mix> mixes = mixRepository.findAll();
         model.addAttribute("mixes", mixes);
-        return "HTML-JS-SBA/mix-page";
+        return "HTML/mix-page";
     }
 
     /*
@@ -113,6 +113,6 @@ public class MixController {
     public String userMainAccountPage(Model model) {
         Iterable<Mix> mixes = mixRepository.findAll();
         model.addAttribute("mixes", mixes);
-        return "HTML-JS-SBA/account-main";
+        return "HTML/account-main";
     }
 }

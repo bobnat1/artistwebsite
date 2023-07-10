@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping("/")
     public String frontPage() {
 
-        return "HTML-JS-SBA/index";
+        return "HTML/index";
     }
 
     // Submits user registrations and saves to database
@@ -34,16 +34,16 @@ public class UserController {
     public String loginRegister(@Valid @ModelAttribute (name = "user") UserDTO userDTO, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()){
-            return "HTML-JS-SBA/loginregister";
+            return "HTML/loginregister";
         }
 
         if (userService.findUserByEmail(userDTO.getEmail()) == null){
             userService.saveUser(userDTO);
 
-            return "HTML-JS-SBA/confirmation-page";
+            return "HTML/confirmation-page";
         }
         else
-            return "HTML-JS-SBA/loginregister";
+            return "HTML/loginregister";
     }
 
     // Brings user to authenticated User role's home page
@@ -59,37 +59,37 @@ public class UserController {
     @GetMapping("/register-user")
     public String getLoginPage(Model model) {
         model.addAttribute("user", new UserDTO());
-        return "HTML-JS-SBA/loginregister";
+        return "HTML/loginregister";
     }
 
     // Brings user to the login page
     @RequestMapping("/login-user")
     public String loginUser() {
-        return "HTML-JS-SBA/login";
+        return "HTML/login";
     }
 
     // Brings user to the contact page
     @RequestMapping("/dj-contact")
     public String djContactPage() {
-        return "HTML-JS-SBA/contact";
+        return "HTML/contact";
     }
 
     // Brings user to the page with mixes posted
     @RequestMapping("/dj-mix")
     public String djMixPage() {
-        return "HTML-JS-SBA/offthetop";
+        return "HTML/offthetop";
     }
 
     // Brings User role Admin to the admin home page
     @RequestMapping("/page-admin")
     public String getAdminPage(){
-        return "HTML-JS-SBA/admin-page";
+        return "HTML/admin-page";
     }
 
     // Brings user to message sent confirmation page
     @RequestMapping("/confirm-message")
     public String confirmMessage() {
-        return "HTML-JS-SBA/message-confirmation";
+        return "HTML/message-confirmation";
     }
 
     // Brings User role Admin to user management page
@@ -97,7 +97,7 @@ public class UserController {
     public String editUsers(Model model) {
         Iterable<User> userList = userService.getAllUsers();
         model.addAttribute("users", userList);
-        return "HTML-JS-SBA/edit-users";
+        return "HTML/edit-users";
     }
 
     // On user-edit page if Admin changes user role then this will process that request

@@ -25,7 +25,7 @@ public class MessageController {
     @RequestMapping("/message-dj")
     public String messageScreen(Model model) {
         model.addAttribute("message", new Message());
-        return "HTML-JS-SBA/message";
+        return "HTML/message";
     }
 
     /*
@@ -49,7 +49,7 @@ public class MessageController {
     public String checkMessages(Model model){
         Iterable<Message> messages = messageRepository.findAll();
         model.addAttribute("messages", messages);
-        return "HTML-JS-SBA/edit-messages";
+        return "HTML/edit-messages";
     }
 
     // When requested, the message object is deleted from the database
