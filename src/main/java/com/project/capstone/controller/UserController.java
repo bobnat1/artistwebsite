@@ -89,10 +89,10 @@ public class UserController {
     }
 
     // Brings user to the page with mixes posted
-    @RequestMapping("/dj-mix")
-    public String djMixPage() {
-        return "HTML/offthetop";
-    }
+//    @RequestMapping("/dj-mix")
+//    public String djMixPage() {
+//        return "HTML/offthetop";
+//    }
 
     // Brings User role Admin to the admin home page
     @RequestMapping("/page-admin")

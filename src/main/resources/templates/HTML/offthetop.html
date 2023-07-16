@@ -1,96 +1,103 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <html lang="en">
-    <head>
+<head>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>OFF THE TOP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OFF THE TOP</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="/styles/offthetop.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/offthetop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
-        
 
-    </head>
-    <style>
+</head>
+<style>
         body {
 
             background-color: black;
 
         }
-    </style>
-    <body>
-        <div class="container">
-            <nav class="fixed-top" style="background-color: black;">
-            <div class="row justify-content-start">
-                <h4><a id="home-link" href="/">HVSSR</a></h4>
-            </div>
 
-
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                    <h2 class="heading">OFF THE TOP DJ MIX</h2>
-                    <hr class="desktop-page">
-                    <p class="desktop-page" style="text-align: center;">No preplanned sets</p>
-                    <hr class="desktop-page">
-                </div>
-            </div>
-            </nav>
-
-            <div class="row justify-content-center lowest-element" style="margin-top: 50px;">
-                <div class="col-auto">
-                    <hr>
-                    <img style="height:auto; width:100%;" class="mobile-image" id="oft" src="/images/OFT.jpg">
-                    <hr style="border-width: 2px">
-                    <iframe class="custom-iframe mobile-page" style="padding-left: 0" width="100%" height="200" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-mix-tech-progressed%2F" frameborder="0" allow="autoplay"></iframe>
-                    <hr style="border-width: 2px">
-                    <iframe class="custom-iframe mobile-page" style="padding-left: 0" width="100%" height="200" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-set-2-groovy-good-morning%2F" frameborder="0" allow="autoplay"></iframe>
-
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center" style="margin-top: 300px;">
-                <div class="col-auto">
-
-
-<!--                    <iframe class="custom-iframe desktop-page" style="padding-left: 20px" width="290%" height="400" src="https://www.mixcloud.com/widget/iframe/?autoplay=1&feed=%2FHVSSR%2F" frameborder="0" allow="autoplay"></iframe>-->
-                    <hr class="desktop-page" style="border-width: 4px; width:100%;">
-                    <h4 class="desktop-page">Off The Top Live DJ Mix: Tech Progressed</h4>
-                    <iframe class="desktop-page" width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-mix-tech-progressed%2F" frameborder="0" allow="autoplay"></iframe>
-                    <hr class="desktop-page" style="border-width: 4px; width:100%;">
-                    <h4 class="desktop-page">Off The Top Live DJ Set #2: Groovy Good Morning</h4>
-                    <iframe class="desktop-page" width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-set-2-groovy-good-morning%2F" frameborder="0" allow="autoplay"></iframe>
-                    <hr class="desktop-page" style="border-width: 4px; width:100%;">
-                </div>
-
-                <div class="row justify-content-center">
-                    <div class="col-auto">
-
-                        <h4 class= "mobile-page">No preplanned sets</h4>
-                        <hr>
-                    </div>
-                </div>
-
-                <div class="row justify-content-end">
-                    <div class="col-auto" style="margin-top: 300px;">
-                        <h8 style="">more mixes <a href="https://www.youtube.com/@hvssr6820/videos">here</a></h8>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
+</style>
+<body>
+<div class="container">
+    <nav class="fixed-top" style="background-color: black;">
+        <div class="row justify-content-start">
+            <h4><a id="home-link" href="/">HVSSR</a></h4>
         </div>
 
-    </body>
+
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <h2 class="heading">OFF THE TOP DJ MIX</h2>
+                <hr class="desktop-page">
+                <p class="desktop-page" style="text-align: center;">No preplanned sets</p>
+                <hr class="desktop-page">
+            </div>
+        </div>
+    </nav>
+
+    <div class="row justify-content-center lowest-element" style="margin-top: 50px;">
+        <div class="col-auto">
+            <hr>
+            <img style="height:auto; width:100%;" class="mobile-image" id="oft" src="/images/OFT.jpg">
+        </div>
+
+    </div>
+
+
+    <div id="lower-during-desktop" class="row justify-content-center">
+        <div class="col-auto">
+
+
+            <!--                    <iframe class="custom-iframe desktop-page" style="padding-left: 20px" width="290%" height="400" src="https://www.mixcloud.com/widget/iframe/?autoplay=1&feed=%2FHVSSR%2F" frameborder="0" allow="autoplay"></iframe>-->
+            <hr class="desktop-page" style="border-width: 4px; width:100%;">
+            <h4 class="desktop-page">Off The Top Live DJ Mix: Tech Progressed</h4>
+            <iframe class="desktop-page" width="100%" height="60"
+                    src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-mix-tech-progressed%2F"
+                    frameborder="0" allow="autoplay"></iframe>
+            <hr class="desktop-page" style="border-width: 4px; width:100%;">
+            <h4 class="desktop-page">Off The Top Live DJ Set #2: Groovy Good Morning</h4>
+            <iframe class="desktop-page" width="100%" height="60"
+                    src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-set-2-groovy-good-morning%2F"
+                    frameborder="0" allow="autoplay"></iframe>
+            <hr class="desktop-page" style="border-width: 4px; width:100%;">
+            <div class="desktop-page" th:each="stream: ${streams}">
+                <h4 th:utext="${stream.name}" class="desktop-page"></h4>
+                <div th:utext="${stream.htmlCode}"></div>
+            </div>
+            <hr style="border-width: 2px">
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-auto">
+
+                <h4 class="mobile-page">No preplanned sets</h4>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-auto" style="margin-top: 300px;">
+                <h8 style="">more mixes <a href="https://www.youtube.com/@hvssr6820/videos">here</a></h8>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
 
 </html>
