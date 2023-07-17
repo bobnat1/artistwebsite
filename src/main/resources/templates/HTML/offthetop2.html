@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HVSSR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/7c62284aa0.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/offthetop.css">
+
+
+</head>
+<style>
+        body {
+
+            background-color: black;
+
+        }
+    </style>
+<body>
+
+
+<div class="container">
+
+    <section class="showcase">
+<!--    <nav class="fixed-top" style="background-color: black">-->
+        <div class="c">
+            <div class="c2">
+                <header>
+                    <h4 class="logo" style="font-family: 'Orbitron', sans-serif; color: whitesmoke; margin-bottom: 60px;"><a id="home-link" href="/">HVSSR</a></h4>
+                    <i class="fa-solid fa-bars fa-xl toggle" style="color: #ffffff;"></i>
+                </header>
+            </div>
+        </div>
+<!--    </nav>-->
+<!--        <video autoplay muted loop playsinline id="visuals">-->
+<!--            <source src="/video/0001-0240.mp4" type="video/mp4">-->
+<!--        </video>-->
+
+        <section class="showcase-two">
+        <div class="row justify-content-center lowest-element">
+            <div class="col-auto">
+                <hr>
+                <img style="height:auto; width:100%;" class="mobile-image" id="oft" src="/images/OFT.jpg">
+            </div>
+
+        </div>
+
+
+        <div id="lower-during-desktop" class="row justify-content-center">
+            <div class="col-auto">
+
+
+                <!--                    <iframe class="custom-iframe desktop-page" style="padding-left: 20px" width="290%" height="400" src="https://www.mixcloud.com/widget/iframe/?autoplay=1&feed=%2FHVSSR%2F" frameborder="0" allow="autoplay"></iframe>-->
+                <hr class="desktop-page" style="border-width: 4px; width:100%;">
+                <h4 class="desktop-page">Off The Top Live DJ Mix: Tech Progressed</h4>
+                <iframe class="desktop-page" width="100%" height="60"
+                        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-mix-tech-progressed%2F"
+                        frameborder="0" allow="autoplay"></iframe>
+                <hr class="desktop-page" style="border-width: 4px; width:100%;">
+                <h4 class="desktop-page">Off The Top Live DJ Set #2: Groovy Good Morning</h4>
+                <iframe class="desktop-page" width="100%" height="60"
+                        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2FHVSSR%2Foff-the-top-live-dj-set-2-groovy-good-morning%2F"
+                        frameborder="0" allow="autoplay"></iframe>
+                <hr class="desktop-page" style="border-width: 4px; width:100%;">
+                <div class="desktop-page" th:each="stream: ${streams}">
+                    <h4 th:utext="${stream.name}" class="desktop-page"></h4>
+                    <div th:utext="${stream.htmlCode}"></div>
+                </div>
+                <hr style="border-width: 2px">
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-auto">
+
+                    <h4 class="mobile-page">No preplanned sets</h4>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row justify-content-end">
+                <div class="col-auto" style="margin-top: 300px;">
+                    <h8 style="">more mixes <a href="https://www.youtube.com/@hvssr6820/videos">here</a></h8>
+                </div>
+            </div>
+        </div>
+        </section>
+
+
+
+
+
+        <div class="overlay"></div>
+
+<!--        <div class="row justify-content-start">-->
+<!--            <div class="col-auto">-->
+<!--                <ul class="social">-->
+<!--                    <li><a href="#"><i class="fa-brands fa-soundcloud" style="color: #ffffff;"></i></a></li>-->
+<!--                    <li><a href="#"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a></li>-->
+<!--                    <li><a href="#"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </section>
+
+
+
+<!--    <section class="showcase-two">-->
+
+<!--    </section>-->
+
+
+
+
+
+    <div class="row justify-content-end">
+        <div class="col-auto menu">
+            <ul>
+
+                <li id="3rd"><a href="/dj-contact">Contact</a></li>
+                <li sec:authorize="!isAuthenticated()" id="4th"><a href="/login-user">Login</a></li>
+                <li sec:authorize="hasRole('USER')" id="4.5th"><a href="/main-account">Home</a></li>
+                <li sec:authorize="hasRole('ADMIN')" id="4.6th"><a href="/page-admin">Admin</a></li>
+                <li id="5th"><a href="https://hvssr.bandcamp.com/">Releases</a></li>
+                <li style="float:right"><a href="/dj-mix">Off The Top Mix</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="/js/menu.js">
+
+</script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

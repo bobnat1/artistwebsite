@@ -22,7 +22,7 @@ public class StreamsController {
     public String djMixPage(Model model) {
         Iterable<Streams> streams = streamsRepository.findAll();
         model.addAttribute("streams", streams);
-        return "HTML/offthetop";
+        return "HTML/offthetop2";
     }
 
 }
