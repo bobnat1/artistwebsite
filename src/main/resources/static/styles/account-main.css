@@ -17,3 +17,35 @@ body{
     margin-top: 200px;
 
 }
+
+.navbar {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+
+.custom-link {
+
+    margin-right:20px; border-radius: 50px;
+
+}
+
+.custom-link:hover {
+    opacity: 0.7;
+}
+
+
+.active {
+    border: 2px solid white;
+    padding: 10px;
+    font-weight: bold;
+    background-color: grey;
+
+    transition: .25s;
+
+
+}
+

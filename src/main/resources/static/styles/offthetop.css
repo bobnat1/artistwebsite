@@ -196,6 +196,10 @@ body {
 
 }
 
+.showcase-two {
+    margin: 0 auto;
+}
+
 .showcase-two.active {
     right: 300px;
 }

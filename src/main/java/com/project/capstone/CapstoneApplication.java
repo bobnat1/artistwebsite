@@ -12,6 +12,6 @@ public class CapstoneApplication {
 
 }
 
-/*TODO -later date- add redirect: paths for controller, JS on role confirm?
+/*TODO -later date- add redirect: paths for controller, add news post, add user preferences
 *  add static mobile view, update password, email verification,
 *  better messaging system */
