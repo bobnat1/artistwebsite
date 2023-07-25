@@ -3,7 +3,10 @@ package com.project.capstone.controller;
 import com.project.capstone.dto.UserDTO;
 import com.project.capstone.model.Message;
 import com.project.capstone.model.Mix;
+import com.project.capstone.model.Posts;
 import com.project.capstone.model.User;
+import com.project.capstone.repository.MixRepository;
+import com.project.capstone.repository.PostsRepository;
 import com.project.capstone.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -21,6 +24,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MixRepository mixRepository;
+
+    @Autowired
+    private PostsRepository postsRepository;
 
     // Brings user to main page of website
     @GetMapping("/")
@@ -126,6 +135,16 @@ public class UserController {
     public String deleteUsers(@RequestParam("userId") Integer userId) {
         userService.deleteUser(userId);
         return "redirect:/user-edit";
+    }
+
+    // Brings Authenticated user to their home page, and posts current mixes saves to database for user to download
+    @RequestMapping("/main-account")
+    public String userMainAccountPage(Model model) {
+        Iterable<Mix> mixes = mixRepository.findAll();
+        Iterable<Posts> posts = postsRepository.findAll();
+        model.addAttribute("mixes", mixes);
+        model.addAttribute("posts", posts);
+        return "HTML/account-main2";
     }
 
 }

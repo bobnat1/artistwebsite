@@ -109,10 +109,10 @@ public class MixController {
     }
 
     // Brings Authenticated user to their home page, and posts current mixes saves to database for user to download
-    @RequestMapping("/main-account")
-    public String userMainAccountPage(Model model) {
-        Iterable<Mix> mixes = mixRepository.findAll();
-        model.addAttribute("mixes", mixes);
-        return "HTML/account-main2";
-    }
+//    @RequestMapping("/main-account")
+//    public String userMainAccountPage(Model model) {
+//        Iterable<Mix> mixes = mixRepository.findAll();
+//        model.addAttribute("mixes", mixes);
+//        return "HTML/account-main2";
+//    }
 }

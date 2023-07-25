@@ -89,20 +89,21 @@
                         <div class="col-auto">
 
                             <div style="display: none;" id="home">
-                                <!-- <p>Download the latest Off The Top Mixes</p>
-                                <p>Send me an <a href="/message-dj">inquiry</a> directly</p>
-                                <p>Thank you for your support!!</p> -->
-                                
                                 <div class="row justify-content-center">
                                     <div class="col-auto">
-                                        <h3>News</h3>
+                                        <h3 class="posts">News</h3>
                                     </div>
                                 </div>
-
-                                <hr style="border-width: 3px;">
-                                <p style="margin-top: 10px;">Hello all and thank you for joining. I just released my latest mix series called Off
-                                    The Top</p>
-                                <hr style="border-width: 3px;">
+                                <div th:each="post : ${posts}">
+                                    <hr style="border-width: 3px; width: 100%">
+                                    <!-- <p style="margin-top: 10px;">Hello all and thank you for joining. I just released my
+                                        latest mix series called Off
+                                        The Top</p> -->
+                                        <h4 class="posts" style="margin-top: 10px;" th:text="${post.title}"></h4>
+                                        <p class="posts" th:text="post.dateTime"></p>
+                                        <p class="posts" th:text="${post.body}"></p>
+                                    <hr style="border-width: 3px; width: 100%">
+                                </div>
 
                             </div>
 

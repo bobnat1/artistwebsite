@@ -60,7 +60,11 @@ hr {
      width: 100%;
 }
 
-
+.posts {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
 
 
 
@@ -102,7 +106,8 @@ hr {
     width: 100%;
     height: 100%;
     /* background: rgb(231, 137, 137); */
-    background: #414042;
+    /* background: #414042; */
+    background: black;
     mix-blend-mode: overlay;
     z-index: -2000;
 
