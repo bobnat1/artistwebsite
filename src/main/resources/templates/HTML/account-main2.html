@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HVSSR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/7c62284aa0.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/account-main.css">
+
+
+</head>
+<style>
+    body {
+
+        background-color: black;
+
+    }
+</style>
+
+<body>
+
+
+    <div class="container">
+
+        <section class="showcase">
+
+            <div class="c">
+                <div class="c2">
+                    <header>
+                        <h4 class="logo"
+                            style="font-family: 'Orbitron', sans-serif; color: whitesmoke; margin-bottom: 60px;"><a
+                                id="home-link" href="/">HVSSR</a></h4>
+                        <i class="fa-solid fa-bars fa-xl toggle" style="color: #ffffff;"></i>
+                    </header>
+                </div>
+            </div>
+
+
+            <section class="showcase-two">
+                <div class="row justify-content-center lowest-element">
+                    <div class="col-auto">
+                        <h4>Welcome</h4>
+                        <hr>
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center" style="height: 100%;">
+                    <div class="col-auto">
+
+                        <hr>
+
+                        <nav>
+                            <ul class="navbar-nav d-flex flex-row">
+                                <li class="nav-item custom-link load-home" style="margin-right:20px;">
+                                    <a id="home-button" onclick="toggleDiv('home')" class="nav-link" href="#">User
+                                        Home</a>
+                                </li>
+
+                                <li class="nav-item custom-link load-mixes" style="margin-right:20px;">
+                                    <a id="mixes-button" onclick="toggleDiv('mixes')" class="nav-link" href="#">Free
+                                        Mixes</a>
+                                </li>
+
+                                <li class="nav-item custom-link load-pref">
+                                    <a class="nav-link" href="#">Preferences</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <hr>
+
+                    </div>
+
+                    <div class="row justify-content-center lower-element">
+                        <div class="col-auto">
+
+                            <div style="display: none;" id="home">
+                                <!-- <p>Download the latest Off The Top Mixes</p>
+                                <p>Send me an <a href="/message-dj">inquiry</a> directly</p>
+                                <p>Thank you for your support!!</p> -->
+                                
+                                <div class="row justify-content-center">
+                                    <div class="col-auto">
+                                        <h3>News</h3>
+                                    </div>
+                                </div>
+
+                                <hr style="border-width: 3px;">
+                                <p style="margin-top: 10px;">Hello all and thank you for joining. I just released my latest mix series called Off
+                                    The Top</p>
+                                <hr style="border-width: 3px;">
+
+                            </div>
+
+                            <div style="display: none;" id="mixes">
+
+                                <table>
+                                    <th:block th:each="mix : ${mixes}">
+                                        <tr>
+                                            <td th:text="${mix.mixName}"></td>
+                                            <td>
+                                                <a th:href="@{/download-mix/{mixId}(mixId=${mix.id})}">Download</a>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-start lower-element">
+                        <div class="col-auto">
+
+                            <div sec:authorize="isAuthenticated()">
+                                <!--                        <p>Logout</p>-->
+
+                                <form action="#" th:action="@{/logout}" method="post">
+                                    <input id="submitButton" type="submit" value="Logout" />
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="overlay"></div>
+
+            <div class="row justify-content-start">
+                <div class="col-auto">
+                    <ul class="social">
+                        <li><a href="#"><i class="fa-brands fa-soundcloud" style="color: #ffffff;"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </section>
+
+
+        <div class="row justify-content-end">
+            <div class="col-auto menu">
+                <ul>
+
+                    <li id="3rd"><a href="/dj-contact">Contact</a></li>
+                    <li sec:authorize="!isAuthenticated()" id="4th"><a href="/login-user">Login</a></li>
+                    <li sec:authorize="hasRole('USER')" id="4.5th"><a href="/main-account">Home</a></li>
+                    <li sec:authorize="hasRole('ADMIN')" id="4.6th"><a href="/page-admin">Admin</a></li>
+                    <li id="5th"><a href="https://hvssr.bandcamp.com/">Releases</a></li>
+                    <li style="float:right"><a href="/dj-mix">Off The Top Mix</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/menu.js">
+
+    </script>
+
+    <script>
+
+        var selectedDiv = document.getElementById('home');
+        selectedDiv.style.display = 'block';
+
+        var selectedDivButton = document.getElementById('home-button');
+        selectedDivButton.classList.add('current');
+
+        function toggleDiv(divId) {
+            var div = document.getElementById(divId);
+
+            if (selectedDiv !== null) {
+                // Hide the previously selected div
+                selectedDiv.style.display = "none";
+
+                selectedDivButton.classList.remove('current');
+
+                console.log("hide");
+            }
+
+            if (div !== selectedDiv) {
+                // Show the newly selected div
+                div.style.display = "block";
+                selectedDiv = div;
+
+                console.log("show")
+            }
+
+            if (div == selectedDiv) {
+                div.style.display = "block";
+                selectedDiv = div;
+
+                var buttonId = divId + '-button';
+                var newSelectedDivButton = document.getElementById(buttonId);
+                newSelectedDivButton.classList.add('current');
+                selectedDivButton = newSelectedDivButton;
+            }
+        }
+
+
+    </script>
+</body>
+
+
+</html>

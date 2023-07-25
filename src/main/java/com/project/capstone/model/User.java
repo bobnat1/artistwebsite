@@ -21,6 +21,8 @@ public class User {
     private String email;
     private String password;
     private String username;
+    private boolean newsUpdates;
+
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",

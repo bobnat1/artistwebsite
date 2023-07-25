@@ -11,7 +11,8 @@ public class CapstoneApplication {
 	}
 
 }
-
+//TODO -account-main2- finish page design, implement news/blog post, implement user privacy options,
+// update password
 /*TODO -later date- add redirect: paths for controller, add news post, add user preferences
-*  add static mobile view, update password, email verification,
+*  add static mobile view, CAPTCHA,
 *  better messaging system */

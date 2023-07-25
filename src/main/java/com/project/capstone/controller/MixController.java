@@ -113,6 +113,6 @@ public class MixController {
     public String userMainAccountPage(Model model) {
         Iterable<Mix> mixes = mixRepository.findAll();
         model.addAttribute("mixes", mixes);
-        return "HTML/account-main";
+        return "HTML/account-main2";
     }
 }
