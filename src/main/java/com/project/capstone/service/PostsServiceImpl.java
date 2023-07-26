@@ -21,12 +21,17 @@ public class PostsServiceImpl implements PostsService {
     }
 
     @Override
-    public void deletePosts(Posts posts) {
-
+    public void deletePosts(Integer postId) {
+        postsRepository.deleteById(postId);
     }
 
     @Override
     public void editPosts(Posts posts) {
 
+    }
+
+    @Override
+    public Iterable<Posts> allPosts() {
+        return postsRepository.findAll();
     }
 }
