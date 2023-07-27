@@ -10,6 +10,7 @@ import com.project.artistwebsite.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -135,12 +136,22 @@ public class UserController {
 
     // Brings Authenticated user to their home page, and posts current mixes saves to database for user to download
     @RequestMapping("/main-account")
-    public String userMainAccountPage(Model model) {
+    public String userMainAccountPage(Model model, Authentication authentication) {
         Iterable<Mix> mixes = mixRepository.findAll();
         Iterable<Posts> posts = postsRepository.findAll();
+        String email = authentication.getName();
         model.addAttribute("mixes", mixes);
         model.addAttribute("posts", posts);
+        model.addAttribute("email", email);
+//        model.addAttribute("user", userService.findUserByEmail(email));
         return "HTML/account-main2";
+        // add authenticator email to get specific user logged in
     }
 
+    @PostMapping("/change-password")
+    public String changePassword(@Valid @ModelAttribute (name ="password") String password, @ModelAttribute (name ="newPassword") String newPassword, Authentication authentication){
+        String email = authentication.getName();
+        userService.changeUserPassword(password, newPassword, email);
+        return "redirect:/main-account";
+    }
 }

@@ -60,6 +60,16 @@ public class UserServiceImpl implements UserService {
         logger.info("User with email " + user.getEmail() + " has signed up");
     }
 
+    public void changeUserPassword(String password, String newPassword, String email) {
+        User user = userRepository.findUserByEmail(email);
+        if (encoder.matches(password, user.getPassword())) {
+            user.setPassword(encoder.encode(newPassword));
+            userRepository.save(user);
+        }
+        else
+            throw new IllegalArgumentException("Incorrect Password");
+    }
+
     // finds user email in database for authentication
     @Override
     @Transactional

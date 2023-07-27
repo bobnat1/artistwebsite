@@ -19,4 +19,6 @@ public interface UserService extends UserDetailsService {
     public void changeRoles(int userId, int newRoleId);
 
     public void deleteUser(int userId);
+
+    public void changeUserPassword(String password, String newPassword, String email);
 }
