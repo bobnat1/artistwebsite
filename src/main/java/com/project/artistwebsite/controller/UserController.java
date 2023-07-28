@@ -134,6 +134,12 @@ public class UserController {
         return "redirect:/user-edit";
     }
 
+    @RequestMapping("/delete-profile")
+    public String deleteProfile(@RequestParam("userId") Integer userId) {
+        userService.deleteUser(userId);
+        return "redirect:/logout";
+    }
+
     // Brings Authenticated user to their home page, and posts current mixes saves to database for user to download
     @RequestMapping("/main-account")
     public String userMainAccountPage(Model model, Authentication authentication) {
@@ -143,7 +149,7 @@ public class UserController {
         model.addAttribute("mixes", mixes);
         model.addAttribute("posts", posts);
         model.addAttribute("email", email);
-//        model.addAttribute("user", userService.findUserByEmail(email));
+        model.addAttribute("user", userService.findUserByEmail(email));
         return "HTML/account-main2";
         // add authenticator email to get specific user logged in
     }
@@ -152,6 +158,14 @@ public class UserController {
     public String changePassword(@Valid @ModelAttribute (name ="password") String password, @ModelAttribute (name ="newPassword") String newPassword, Authentication authentication){
         String email = authentication.getName();
         userService.changeUserPassword(password, newPassword, email);
+        return "redirect:/main-account";
+    }
+
+    @PostMapping("/get-emails")
+    public String receiveEmails(@Valid @ModelAttribute (name = "getEmails") boolean getEmails, Authentication authentication) {
+        System.out.println(getEmails);
+        String email = authentication.getName();
+        userService.updateUserPrefEmail(getEmails, email);
         return "redirect:/main-account";
     }
 }

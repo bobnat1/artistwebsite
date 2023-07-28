@@ -70,6 +70,12 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Incorrect Password");
     }
 
+    public void updateUserPrefEmail(boolean getEmails, String email) {
+        User user = userRepository.findUserByEmail(email);
+        user.setNewsUpdates(getEmails);
+        userRepository.save(user);
+    }
+
     // finds user email in database for authentication
     @Override
     @Transactional

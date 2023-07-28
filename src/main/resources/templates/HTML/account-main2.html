@@ -76,7 +76,8 @@
                                 </li>
 
                                 <li class="nav-item custom-link load-pref">
-                                    <a id="preferences-button" onclick="toggleDiv('preferences')" class="nav-link" href="#">Preferences</a>
+                                    <a id="preferences-button" onclick="toggleDiv('preferences')" class="nav-link"
+                                        href="#">Preferences</a>
                                 </li>
                             </ul>
                         </nav>
@@ -96,9 +97,9 @@
                                 </div>
                                 <div th:each="post : ${posts}">
                                     <hr style="border-width: 3px; width: 100%">
-                                        <h4 class="posts" style="margin-top: 10px;" th:text="${post.title}"></h4>
-                                        <p class="posts" th:text="${post.dateTime}"></p>
-                                        <p class="posts" th:text="${post.body}"></p>
+                                    <h4 class="posts" style="margin-top: 10px;" th:text="${post.title}"></h4>
+                                    <p class="posts" th:text="${post.dateTime}"></p>
+                                    <p class="posts" th:text="${post.body}"></p>
                                     <hr style="border-width: 3px; width: 100%">
                                 </div>
 
@@ -127,6 +128,27 @@
                                     <p>Enter your new password</p>
                                     <input type="password" name="newPassword">
                                     <input type="submit" value="change password">
+                                </form>
+                                <hr>
+                                <h4>Delete Profile</h4>
+                                <form th:action="@{/delete-profile}" th:object="${user}" method="post">
+                                    <!-- <select name="userId" required> -->
+                                        <input name="userId" type="hidden" th:value="${user.id}">
+                                        <input type="submit" value="delete profile">
+                                        <!-- <option value="">Select a user to Delete</option>
+                                        <option th:"${user}" th:value="${user.id}" th:text="${user.email}">
+                                        </option> -->
+                                    <!-- </select> -->
+                                    <!-- <button type="submit">Delete</button> -->
+                                </form>
+                                <hr>
+                                <h4>HVSSR News & Updates</h4>
+                                <form th:action="@{/get-emails}" method="post">
+                                <label>Would you like to recieve an email when new content is released?
+                                    <label>Yes<input name="getEmails" type="radio" th:value="true"></label>
+                                    <label>No<input name="getEmails" type="radio" th:value="false"></label>
+                                </label>
+                                <input type="submit" value="submit">
                                 </form>
                             </div>
                         </div>
