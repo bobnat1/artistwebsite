@@ -1,6 +1,6 @@
-body{
+body {
 
-    font-family: 'Orbitron', sans-serif; 
+    font-family: 'Orbitron', sans-serif;
     color: whitesmoke;
     background-color: black;
 
@@ -8,8 +8,8 @@ body{
 
 #home-link {
 
-    text-decoration: none; 
-    color: whitesmoke; 
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 .lower-element {
@@ -29,7 +29,8 @@ body{
 
 .custom-link {
 
-    margin-right:20px; border-radius: 50px;
+    margin-right: 20px;
+    border-radius: 50px;
 
 }
 
@@ -50,14 +51,14 @@ body{
 }
 
 h3 {
-color: white;
-margin: auto;
+    color: white;
+    margin: auto;
 
 }
 
 hr {
     border-width: 4px;
-     width: 100%;
+    width: 100%;
 }
 
 .posts {
@@ -82,7 +83,10 @@ hr {
 
 }
 
-#img1, #img2, #img3, #img4 {
+#img1,
+#img2,
+#img3,
+#img4 {
 
     margin-top: 10px;
 }
@@ -96,7 +100,7 @@ hr {
     object-fit: cover;
     opacity: 0.7;
     z-index: -1;
-  }
+}
 
 .overlay {
 
@@ -115,8 +119,9 @@ hr {
 
 body {
 
-    font-family: 'Orbitron', sans-serif; color: whitesmoke;
-  }
+    font-family: 'Orbitron', sans-serif;
+    color: whitesmoke;
+}
 
 .showcase {
 
@@ -132,7 +137,7 @@ body {
     z-index: 2;
     transition: 0.5s;
 
-  }
+}
 
 .showcase.active {
 
@@ -169,13 +174,13 @@ body {
     cursor: pointer;
     background-position: center;
 
-  }
+}
 
 .logo {
 
     cursor: pointer;
 
-    }
+}
 
 .toggle.active {
 
@@ -210,8 +215,7 @@ body {
 
 .social li:hover {
 
-   transform: translateY(-15px)
-
+    transform: translateY(-15px)
 }
 
 .menu {
@@ -248,6 +252,48 @@ body {
 
 }
 
+form {
+
+    margin-bottom: 30px;
+}
+
+
+form input {
+
+    margin-bottom: 1em;
+    width: 50%;
+}
+
+form input[type="submit"] {
+    display: block;
+    background-color: #3b3b4f;
+    border-color: white;
+    color: white;
+    width: 25%;
+}
+
+.deleteButton {
+    background-color: red;
+}
+
+.error-message {
+        background-color: black;
+        color: #f60000;
+        border: none;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+}
+
+.success-message {
+        background-color: black;
+        color: #01d112;
+        border: none;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+}
+
 @media (max-width: 991px) {
 
     .showcase,
@@ -279,8 +325,8 @@ body {
         width: 300px;
         height: 100%;
         display: flex;
-        align-items:center;
-        justify-content:right;
+        align-items: center;
+        justify-content: right;
         /* z-index: -2; */
 
     }
@@ -292,5 +338,15 @@ body {
         color: rgba(255, 255, 255, 0.673);
 
     }
+
+    form input {
+        width: 100%;
+    }
+
+    form input[type="submit"] {
+        width: 100%;
+    }
+
+
 }
 

@@ -86,8 +86,16 @@
 
                     </div>
 
-                    <div class="row justify-content-center lower-element">
+                    <div class="row justify-content-center">
                         <div class="col-auto">
+
+                            <div th:if="${errorMessage}" class="error-message">
+                                <p><span th:text="${errorMessage}"></span></p>
+                            </div>
+
+                            <div th:if="${successMessage}" class="success-message">
+                                <p><span th:text="${successMessage}"></span></p>
+                            </div>
 
                             <div style="display: none;" id="home">
                                 <div class="row justify-content-center">
@@ -121,35 +129,40 @@
                             </div>
 
                             <div style="display: none;" id="preferences">
-                                <h4>Preferences</h4>
-                                <form th:action="@{/change-password}" method="post">
-                                    <p>Enter your current password</p>
-                                    <input type="password" name="password">
-                                    <p>Enter your new password</p>
-                                    <input type="password" name="newPassword">
-                                    <input type="submit" value="change password">
-                                </form>
                                 <hr>
-                                <h4>Delete Profile</h4>
-                                <form th:action="@{/delete-profile}" th:object="${user}" method="post">
-                                    <!-- <select name="userId" required> -->
+                                <h3 style="text-align: center;">Preferences</h43>
+                                    <hr>
+                                    <h4>Update Password</h4>
+                                    <form th:action="@{/change-password}" method="post">
+                                        <p>Enter your current password</p>
+                                        <input type="password" name="password">
+                                        <p>Enter your new password</p>
+                                        <input type="password" name="newPassword">
+                                        <input type="submit" value="change password">
+                                    </form>
+                                    <!-- <div th:if="${errorMessage}" class="error-message">
+                                    <p><span th:text="${errorMessage}"></span></p>
+                                </div> -->
+                                    <hr>
+                                    <h4>Delete Profile</h4>
+                                    <p>If you want to close your account, click the button "Delete Profile" below.
+                                        Your account will be terminated permanently from our database.
+                                        This action cannot be undone!</p>
+                                    <form id="deleteProfile" th:action="@{/delete-profile}" th:object="${user}"
+                                        method="post" onsubmit="return showConfirmation()">
                                         <input name="userId" type="hidden" th:value="${user.id}">
-                                        <input type="submit" value="delete profile">
-                                        <!-- <option value="">Select a user to Delete</option>
-                                        <option th:"${user}" th:value="${user.id}" th:text="${user.email}">
-                                        </option> -->
-                                    <!-- </select> -->
-                                    <!-- <button type="submit">Delete</button> -->
-                                </form>
-                                <hr>
-                                <h4>HVSSR News & Updates</h4>
-                                <form th:action="@{/get-emails}" method="post">
-                                <label>Would you like to recieve an email when new content is released?
-                                    <label>Yes<input name="getEmails" type="radio" th:value="true"></label>
-                                    <label>No<input name="getEmails" type="radio" th:value="false"></label>
-                                </label>
-                                <input type="submit" value="submit">
-                                </form>
+                                        <input class="deleteButton" type="submit" value="delete profile">
+                                    </form>
+                                    <hr>
+                                    <h4>News & Updates</h4>
+                                    <form th:action="@{/get-emails}" method="post">
+                                        <label>Would you like to recieve an email when new content is released?
+                                            <label>Yes<input name="getEmails" type="radio" th:value="true"></label>
+                                            <label>No<input name="getEmails" type="radio" th:value="false"></label>
+                                        </label>
+                                        <input type="submit" value="submit">
+                                    </form>
+                                    <hr>
                             </div>
                         </div>
                     </div>
@@ -161,7 +174,7 @@
                                 <!--                        <p>Logout</p>-->
 
                                 <form action="#" th:action="@{/logout}" method="post">
-                                    <input id="submitButton" type="submit" value="Logout" />
+                                    <input class="logout" id="submitButton" type="submit" value="Logout" />
                                 </form>
                             </div>
 
@@ -246,6 +259,15 @@
         }
 
 
+    </script>
+    <script>
+        function showConfirmation() {
+            if (confirm('Are you sure you want to delete your profile?')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     </script>
 </body>
 

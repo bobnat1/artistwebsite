@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -94,11 +95,6 @@ public class UserController {
         return "HTML/contact";
     }
 
-    // Brings user to the page with mixes posted
-//    @RequestMapping("/dj-mix")
-//    public String djMixPage() {
-//        return "HTML/offthetop";
-//    }
 
     // Brings User role Admin to the admin home page
     @RequestMapping("/page-admin")
@@ -155,10 +151,18 @@ public class UserController {
     }
 
     @PostMapping("/change-password")
-    public String changePassword(@Valid @ModelAttribute (name ="password") String password, @ModelAttribute (name ="newPassword") String newPassword, Authentication authentication){
-        String email = authentication.getName();
-        userService.changeUserPassword(password, newPassword, email);
-        return "redirect:/main-account";
+    public String changePassword(@Valid @ModelAttribute (name ="password") String password, @ModelAttribute (name ="newPassword") String newPassword, Authentication authentication, Model model, RedirectAttributes redirectAttributes){
+
+            String email = authentication.getName();
+        try {
+            userService.changeUserPassword(password, newPassword, email);
+            redirectAttributes.addFlashAttribute("successMessage", "Password Successfully Updated!");
+            return "redirect:/main-account";
+        } catch (IllegalArgumentException e) {
+            String errorMessage = e.toString();
+            redirectAttributes.addFlashAttribute("errorMessage", "Incorrect Password");
+            return "redirect:/main-account";
+        }
     }
 
     @PostMapping("/get-emails")
