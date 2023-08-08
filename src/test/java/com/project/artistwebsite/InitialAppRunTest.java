@@ -18,9 +18,9 @@ public class InitialAppRunTest {
     /*
 
     *Setting up User Account*
-    Step 1: Run the CapstoneApplication to set up Database
+    Step 1: Run the ArtistWebsiteApplication to set up Database
     Step 2: Run InitialAppRunTest so the method setRolesInRepositoryTest will input ROLE_ADMIN and ROLE_USER into Database
-    Step 3: Run CapstoneApplication and register with email and password
+    Step 3: Run ArtistWebsiteApplication and register with email and password
 
     *Changing initial User Account to Admin*
     Step 1: Comment out setRolesInRepositoryTest and uncomment changeUserRoleTest then run InitialAppRunTest again

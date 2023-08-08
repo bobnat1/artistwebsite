@@ -12,12 +12,7 @@ body{
 }
 
 
-/* #oft {
 
-    max-width: 100%;
-    height:auto;
-
-} */
 
 .lower-element {
 
@@ -33,7 +28,7 @@ body{
 
 .mobile-image {
 
-    /* display: none; */
+
     display: block;
     width: 40%;
     height: auto;
@@ -48,10 +43,7 @@ body{
     display: none;
 }
 
-/* .music-pic {
-    width: 50%;
-    height: 50%
-} */
+
 
 #lower-during-desktop {
     margin-top: 100px;
@@ -177,9 +169,7 @@ body{
     bottom: 0;
     width: 100%;
     height: 100%;
-    /* background: rgb(231, 137, 137); */
-    /* background: #414042; */
-    /* background: black; */
+
     mix-blend-mode: overlay;
     z-index: -2000;
     background-image: url("/images/OFTBG.jpg");
@@ -196,15 +186,11 @@ body{
     bottom: 0;
     width: 100%;
     height: 100%;
-    /* background: rgb(231, 137, 137); */
-    /* background: #414042; */
+
     background: black;
     mix-blend-mode: overlay;
     z-index: -1000;
-    /* background-image: url("/images/OFTBG.jpg");
-    background-repeat: no-repeat;
-    background-size: cover ;*/
-    /* opacity: 0.1; */
+
 }
 
 body {
@@ -222,7 +208,7 @@ body {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    /* color: white; */
+
     color: white;
     z-index: 2;
     transition: 0.5s;
@@ -320,7 +306,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* z-index: -2; */
+
 
 }
 
@@ -371,13 +357,13 @@ body {
         position: absolute;
         top: 0;
         right: 0;
-        /* left: 0; */
+      
         width: 300px;
         height: 100%;
         display: flex;
         align-items:center;
         justify-content:right;
-        /* z-index: -2; */
+       
         
 
     }

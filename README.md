@@ -28,13 +28,13 @@ spring.datasource.password=PASSWORD
 ```
 Finally, replace **PASSWORD** with your MySQL password
 
-Once your applied the changes to connect to your database correctly, run the **CapstoneApplication** to automatically create a database and populate it on your server.
+Once your applied the changes to connect to your database correctly, run the **ArtistWebsiteApplication** to automatically create a database and populate it on your server.
 
 After the database is created, stop the program and navigate to the test folder.
 
 In the test folder run the test class **InitialAppRunTest** so the method **setRolesInRepositoryTest()** will input ROLE_ADMIN and ROLE_USER into Database.
 
-Then run **CapstoneApplication** and register with email and password. **Note:** The registration page can be accessed in the Login section of the website.
+Then run **ArtistWebsiteApplication** and register with email and password. **Note:** The registration page can be accessed in the Login section of the website.
 
 **Now you can log in as a basic user.**
 

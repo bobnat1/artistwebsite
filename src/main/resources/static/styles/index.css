@@ -7,7 +7,10 @@
 
 }
 
-#img1, #img2, #img3, #img4 {
+#img1,
+#img2,
+#img3,
+#img4 {
 
     margin-top: 10px;
 }
@@ -15,7 +18,7 @@
 #side_nav {
     background: white;
     min-width: 100px;
-    min-height:250px;
+    min-height: 250px;
 }
 
 .nav {
@@ -25,13 +28,14 @@
     padding: 0;
     overflow: hidden;
     background-color: black;
-    
+
 }
 
 
 .nav li {
 
-    font-family: 'Orbitron', sans-serif; color: whitesmoke;
+    font-family: 'Orbitron', sans-serif;
+    color: whitesmoke;
     float: left;
     border-right: 1px solid #bbb;
     flex: 1;
@@ -47,7 +51,7 @@
 
 .nav li a {
 
-    display:block;
+    display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -72,7 +76,7 @@
     object-fit: cover;
     opacity: 0.7;
     z-index: -1;
-  }
+}
 
 .overlay {
 
@@ -83,14 +87,15 @@
     height: 100%;
     background: rgb(231, 137, 137);
     mix-blend-mode: overlay;
-    
+
 }
 
 body {
 
-    font-family: 'Orbitron', sans-serif; color: whitesmoke;
-  }
-  
+    font-family: 'Orbitron', sans-serif;
+    color: whitesmoke;
+}
+
 .showcase {
 
     position: absolute;
@@ -104,8 +109,8 @@ body {
     color: white;
     z-index: 2;
     transition: 0.5s;
-    
-  }
+
+}
 
 .showcase.active {
 
@@ -134,13 +139,13 @@ body {
     cursor: pointer;
     background-position: center;
 
-  }
+}
 
 .logo {
 
     cursor: pointer;
 
-    }
+}
 
 .toggle.active {
 
@@ -161,7 +166,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 
 
 }
@@ -175,8 +180,7 @@ body {
 
 .social li:hover {
 
-   transform: translateY(-15px) 
-
+    transform: translateY(-15px)
 }
 
 .menu {
@@ -190,7 +194,7 @@ body {
     align-items: center;
     justify-content: center;
     /* z-index: -2; */
-    
+
 }
 
 .menu ul {
@@ -236,14 +240,14 @@ body {
         position: absolute;
         top: 0;
         right: 0;
-        /* left: 0; */
+       
         width: 300px;
         height: 100%;
         display: flex;
-        align-items:center;
-        justify-content:right;
-        /* z-index: -2; */
-        
+        align-items: center;
+        justify-content: right;
+       
+
     }
 
     .menu ul li a {
@@ -251,6 +255,23 @@ body {
         text-decoration: none;
         font-size: 15px;
         color: rgba(255, 255, 255, 0.673);
-    
+
     }
+
+    video {
+        display: none;
+    }
+
+    .showcase {
+        background-image: url('/images/logobeta1.png');
+        background-size:cover; 
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+    
+
+    }
+
+
 }

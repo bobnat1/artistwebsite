@@ -16,6 +16,7 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(length = 10000)
     private String body;
     private String recipient;
     private String email;
