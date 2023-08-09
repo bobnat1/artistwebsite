@@ -2,6 +2,8 @@
 
 A fully functional full stack website for Artists/DJs so they can interact with their fans, share new music, or post updates. 
 
+Live website: <https://hvssr.net>
+
 ## Table of Contents
 
 - How to demo
