@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EDIT-MESSAGES</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/edit-users.css">
+
+
+</head>
+
+<style>
+        body {
+
+            background-color: black;
+
+        }
+    </style>
+<body>
+<div class="container">
+
+    <div class="row justify-content-start">
+        <h4><a id="home-link" href="/">HVSSR</a></h4>
+    </div>
+
+
+    <div class="row justify-content-start lower-element">
+        <div class="col-auto">
+            <h1>Streams</h1>
+            <hr>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Widget</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="strm : ${stream}">
+                    <td th:text="${strm.name}"></td>
+                    <td th:text="${strm.htmlCode}"></td>
+                    <td>
+                        <form method="post" th:action="@{/streams-delete}">
+                            <input type="hidden" name="streamId" th:value="${strm.id}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center lower-element">
+        <div class="col-auto">
+            <form th:action="@{/streams-send}" th:object="${streams}" method="post">
+                <label for="name">Name: 
+                <input id="name" type="text" th:field="*{name}"></label>
+                <label for="Embedded-Link">Embedded Link: 
+                <textarea rows="10" columns="40" id="Embedded-Link" th:field="*{htmlCode}"></textarea></label>
+                <input type="submit" value="Post Stream">
+            </form> 
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center lower-element">
+        <div class="col-auto">
+            <h4></h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-start lower-element">
+        <div class="col-auto">
+            <form>
+                <input type="button" value="back" onclick="history.back()">
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+</body>
+
+</html>
