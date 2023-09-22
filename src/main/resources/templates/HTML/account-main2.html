@@ -22,16 +22,8 @@
 
 
 </head>
-<style>
-    body {
-
-        background-color: black;
-
-    }
-</style>
 
 <body>
-
 
     <div class="container">
 
@@ -48,7 +40,6 @@
                 </div>
             </div>
 
-
             <section class="showcase-two">
                 <div class="row justify-content-center lowest-element">
                     <div class="col-auto">
@@ -56,7 +47,6 @@
                         <hr>
                     </div>
                 </div>
-
 
                 <div class="row justify-content-center" style="height: 100%;">
                     <div class="col-auto">
@@ -132,7 +122,7 @@
                             </div>
 
                             <div style="display: none;" id="preferences">
-                             
+
                                 <h2 style="text-align: center;">Preferences</h2>
                                 <hr>
                                 <h4 style="text-align: center;">Update Password</h4>
@@ -155,20 +145,30 @@
                                             Your account will be terminated permanently from our database.
                                             This action cannot be undone!</p>
                                         <input name="userId" type="hidden" th:value="${user.id}">
-                                        <input style="background-color: red;" class="deleteButton" type="submit" value="delete profile">
+                                        <input style="background-color: red;" class="deleteButton" type="submit"
+                                            value="delete profile">
                                     </label>
                                 </form>
                                 <hr>
-
-                                <form style="text-align: center; " th:action="@{/get-emails}" method="post">
+                                <form style="text-align: center;" th:object="${userPreferences}"
+                                    th:action="@{/get-emails}" method="post">
                                     <h4>News & Updates</h4>
                                     <p>Would you like to recieve and email when new content is released?</p>
-
-                                    <label>Yes<input name="getEmails" type="radio" th:value="true"></label>
-                                    <label>No<input name="getEmails" type="radio" th:value="false"></label>
+                                    <div style="font-weight: bold;" th:if="${userPreferences.newsUpdates}">
+                                        You recieve email updates.
+                                    </div>
+                                    <div style="font-weight: bold;" th:if="${!userPreferences.newsUpdates}">
+                                        You do not recieve email updates.
+                                    </div>
+                                    <label>Yes<input name="getEmails" type="radio"
+                                            th:checked="${userPreferences.newsUpdates == true}" th:value="true"></label>
+                                    <label>No<input name="getEmails" type="radio"
+                                            th:checked="${userPreferences.newsUpdates == false}"
+                                            th:value="false"></label>
 
                                     <input type="submit" value="submit">
                                 </form>
+
                                 <hr>
                             </div>
                         </div>
@@ -190,7 +190,6 @@
                 </div>
             </section>
 
-
             <div class="overlay"></div>
 
             <div class="row justify-content-start">
@@ -203,9 +202,7 @@
                 </div>
             </div>
 
-
         </section>
-
 
         <div class="row justify-content-end">
             <div class="col-auto menu">
@@ -220,6 +217,7 @@
                 </ul>
             </div>
         </div>
+        
     </div>
 
     <script src="/js/menu.js">
@@ -264,7 +262,6 @@
                 selectedDivButton = newSelectedDivButton;
             }
         }
-
 
     </script>
     <script>

@@ -20,18 +20,9 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/styles/offthetop.css">
 
-
 </head>
-<style>
-    body {
-
-        background-color: black;
-
-    }
-</style>
 
 <body>
-
 
     <div class="container">
 
@@ -52,12 +43,10 @@
             <section class="showcase-two">
                 <div class="row justify-content-center lowest-element">
                     <div class="col-auto">
-                        <hr class="mobile-page" style="border-width: 4px; width:100%;"> 
+                        <hr class="mobile-page" style="border-width: 4px; width:100%;">
                         <img class="mobile-image" id="oft" src="/images/OFT.jpg">
                     </div>
-
                 </div>
-
 
                 <div class="row justify-content-center" style="margin-top: 50px;">
                     <div class="col-auto">
@@ -67,10 +56,8 @@
                     </div>
                 </div>
 
-
                 <div class="row justify-content-center scroll-box" style="margin-bottom: 200px;">
                     <div class="col-auto">
-
 
                         <h3 style="padding: 10%" class="desktop-page">HVSSR Presents: Off The Top Live DJ Mix</h3>
 
@@ -80,16 +67,13 @@
                             <div th:utext="${stream.htmlCode}"></div>
                             <hr class="desktop-page" style="border-width: 4px; width:100%;">
                         </div>
-                        
                     </div>
-
 
                 </div>
             </section>
 
-
             <div class="overlay"></div>
-            
+
             <div class="overlay-two"></div>
 
             <div class="row justify-content-start">
@@ -102,23 +86,20 @@
                 </div>
             </div>
 
-
-
         </section>
-
-
-
 
         <div class="row justify-content-end">
             <div class="col-auto menu">
                 <ul>
 
-                    <li id="3rd"><a href="/dj-contact">Contact</a></li>
+                    <li sec:authorize="!isAuthenticated()" id="4th"><a href="/public-message-dj">Contact</a></li>
+                    <li sec:authorize="hasRole('USER')" id="4.5th"><a href="/message-dj">Contact</a></li>
                     <li sec:authorize="!isAuthenticated()" id="4th"><a href="/login-user">Login</a></li>
                     <li sec:authorize="hasRole('USER')" id="4.5th"><a href="/main-account">Home</a></li>
                     <li sec:authorize="hasRole('ADMIN')" id="4.6th"><a href="/page-admin">Admin</a></li>
                     <li id="5th"><a href="https://hvssr.bandcamp.com/">Releases</a></li>
                     <li style="float:right"><a href="/dj-mix">Off The Top Mix</a></li>
+
                 </ul>
             </div>
         </div>
@@ -128,6 +109,5 @@
 
     </script>
 </body>
-
 
 </html>

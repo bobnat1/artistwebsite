@@ -19,7 +19,7 @@ public class PostsServiceImpl implements PostsService {
         postsRepository.save(posts);
 
     }
-
+    // Deletes posts
     @Override
     public void deletePosts(Integer postId) {
         postsRepository.deleteById(postId);
@@ -30,6 +30,7 @@ public class PostsServiceImpl implements PostsService {
 
     }
 
+    // Shows all posts in the repo
     @Override
     public Iterable<Posts> allPosts() {
         return postsRepository.findAll();

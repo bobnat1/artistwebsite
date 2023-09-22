@@ -21,6 +21,7 @@ public class Message {
     private String recipient;
     private String email;
     private LocalDateTime time;
+    private String subject;
 
 
 }

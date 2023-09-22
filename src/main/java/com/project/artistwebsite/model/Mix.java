@@ -22,6 +22,4 @@ public class Mix {
 
     private String path;
 
-
-
 }

@@ -1,95 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head>
-        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>HVSSR</title>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+<head>
 
-        <script src="https://kit.fontawesome.com/7c62284aa0.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="/styles/index.css">
-        
-    
-    </head>
-    <style>
-        body {
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HVSSR</title>
 
-            background-color: black;
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 
-        }
-    </style>
-    <body>
+    <script src="https://kit.fontawesome.com/7c62284aa0.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
 
+</head>
 
-        <div class="container">
+<body>
+    <div class="container">
 
-            <section class="showcase">
+        <section class="showcase">
 
-                <div class="c">
-                    <div class="c2">
-                        <header>
-                            <h4 class="logo" style="font-family: 'Orbitron', sans-serif; color: whitesmoke; margin-bottom: 60px;">HVSSR</h4>
-                            <i class="fa-solid fa-bars fa-xl toggle" style="color: #ffffff;"></i>
-                        </header>    
-                    </div>        
+            <div class="c">
+                <div class="c2">
+                    <header>
+                        <h4 class="logo"
+                            style="font-family: 'Orbitron', sans-serif; color: whitesmoke; margin-bottom: 60px;">HVSSR
+                        </h4>
+                        <i class="fa-solid fa-bars fa-xl toggle" style="color: #ffffff;"></i>
+                    </header>
                 </div>
+            </div>
 
             <video autoplay muted loop playsinline id="visuals">
                 <source src="/video/0001-0240.mp4" type="video/mp4">
             </video>
 
             <div class="overlay"></div>
-            
+
             <div class="row justify-content-start">
                 <div class="col-auto">
-                <ul class="social">
-                    <li><a href="#"><i class="fa-brands fa-soundcloud" style="color: #ffffff;"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a></li>
-                </ul>
+                    <ul class="social">
+                        <li><a href="#"><i class="fa-brands fa-soundcloud" style="color: #ffffff;"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a></li>
+                    </ul>
                 </div>
             </div>
 
-            </section>
+        </section>
 
-            <div class="row justify-content-end">
-                <div class="col-auto menu">
+        <div class="row justify-content-end">
+            <div class="col-auto menu">
                 <ul>
 
-                    <li id="3rd"><a href="/dj-contact">Contact</a></li>
+                    <li sec:authorize="!isAuthenticated()" id="4th"><a href="/public-message-dj">Contact</a></li>
+                    <li sec:authorize="hasRole('USER')" id="4.5th"><a href="/message-dj">Contact</a></li>
                     <li sec:authorize="!isAuthenticated()" id="4th"><a href="/login-user">Login</a></li>
                     <li sec:authorize="hasRole('USER')" id="4.5th"><a href="/main-account">Home</a></li>
                     <li sec:authorize="hasRole('ADMIN')" id="4.6th"><a href="/page-admin">Admin</a></li>
                     <li id="5th"><a href="https://hvssr.bandcamp.com/">Releases</a></li>
                     <li style="float:right"><a href="/dj-mix">Off The Top Mix</a></li>
                 </ul>
-                </div>
             </div>
         </div>
+        
+    </div>
 
-        <script src="/js/menu.js">
+    <script src="/js/menu.js">
 
-        </script>
-    </body>
-
-
-
-
-
-
-
-
-
-
-
-
+    </script>
+</body>
 
 </html>

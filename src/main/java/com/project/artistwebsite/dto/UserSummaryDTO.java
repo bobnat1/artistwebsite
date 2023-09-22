@@ -9,5 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserSummaryDTO {
 
+    private int id;
     private String email;
 }

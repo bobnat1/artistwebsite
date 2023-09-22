@@ -16,6 +16,7 @@ public class PostsController {
     @Autowired
     PostsService postsService;
 
+    // Allows admin to edit posts
     @RequestMapping("/posts-edit")
     public String postsPage(Model model) {
         Iterable<Posts> post = postsService.allPosts();
@@ -23,6 +24,8 @@ public class PostsController {
         model.addAttribute("post", post);
         return "HTML/edit-posts";
     }
+
+    // Saves posts to repo
     @PostMapping("/send-posts")
     public String sendPosts(@ModelAttribute(name = "posts")Posts posts) {
         postsService.savePosts(posts);
@@ -30,6 +33,7 @@ public class PostsController {
         return "redirect:/posts-edit";
     }
 
+    // Deletes posts from repo
     @RequestMapping("/posts-delete")
     public String processChange(@RequestParam("postId") Integer postId) {
         postsService.deletePosts(postId);

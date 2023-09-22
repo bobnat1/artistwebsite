@@ -1,5 +1,7 @@
 package com.project.artistwebsite.service;
 
+import com.project.artistwebsite.dto.UserPreferencesDTO;
+import com.project.artistwebsite.dto.UserSummaryDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.project.artistwebsite.dto.UserDTO;
@@ -46,6 +48,17 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByEmail(email);
     }
 
+    // returns UserSummaryDTO object
+    @Override
+    public UserSummaryDTO returnUserSummary(String email) {
+        ModelMapper modelMapper = new ModelMapper();
+        UserSummaryDTO userSummaryDTO = new UserSummaryDTO();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        UserSummaryDTO user = modelMapper.map(userRepository.findUserByEmail(email), UserSummaryDTO.class);
+        return user;
+    }
+
     // saves new user into database
     @Override
     public void saveUser(UserDTO userDTO) {
@@ -60,6 +73,8 @@ public class UserServiceImpl implements UserService {
         logger.info("User with email " + user.getEmail() + " has signed up");
     }
 
+    // Changes user's password in repo
+    @Override
     public void changeUserPassword(String password, String newPassword, String email) {
         User user = userRepository.findUserByEmail(email);
         if (encoder.matches(password, user.getPassword())) {
@@ -70,10 +85,22 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Incorrect Password");
     }
 
+    // Updates user's preference to receive emails
+    @Override
     public void updateUserPrefEmail(boolean getEmails, String email) {
         User user = userRepository.findUserByEmail(email);
         user.setNewsUpdates(getEmails);
         userRepository.save(user);
+    }
+
+    // Returns DTO object with user preferences
+    @Override
+    public UserPreferencesDTO returnUserPreferences(String email){
+        UserPreferencesDTO userPreferencesDTO = new UserPreferencesDTO();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        UserPreferencesDTO user = modelMapper.map(userRepository.findUserByEmail(email), UserPreferencesDTO.class);
+        return user;
     }
 
     // finds user email in database for authentication

@@ -27,20 +27,34 @@ public class MessageController {
         return "HTML/message";
     }
 
+    // Brings Non-Authenticated user to message page, loads message object to be saved in later request
+    @RequestMapping("/public-message-dj")
+    public String messageScreenPublic(Model model) {
+        model.addAttribute("message", new Message());
+        return "HTML/public-message";
+    }
+
     /*
     When requested, this method takes the Authenticated user's email and saves it to the message object along with the
     message body and finally saves the message to the database
      */
     @PostMapping("/messages")
     public String sendMessage(@ModelAttribute (name = "message") Message message, Authentication authentication) {
-        String email = authentication.getName();
-        System.out.println(email);
+        if (message.getEmail() == null) {
+            String email = authentication.getName();
+            System.out.println(email);
+            message.setEmail(email);
+        }
         message.setTime(LocalDateTime.now());
-        message.setEmail(email);
-
         messageRepository.save(message);
         return "redirect:/confirm-message";
 
+    }
+
+    // Brings user to message sent confirmation page
+    @RequestMapping("/confirm-message")
+    public String confirmMessage() {
+        return "HTML/message-confirmation";
     }
 
     // Brings User role Admin to message management page, loads messages in database for later requests

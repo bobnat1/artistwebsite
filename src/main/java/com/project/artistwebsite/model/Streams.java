@@ -18,5 +18,4 @@ public class Streams {
     private String htmlCode;
     private String name;
 
-
 }

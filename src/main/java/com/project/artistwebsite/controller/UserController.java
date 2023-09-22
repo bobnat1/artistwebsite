@@ -102,12 +102,6 @@ public class UserController {
         return "HTML/admin-page";
     }
 
-    // Brings user to message sent confirmation page
-    @RequestMapping("/confirm-message")
-    public String confirmMessage() {
-        return "HTML/message-confirmation";
-    }
-
     // Brings User role Admin to user management page
     @RequestMapping("/user-edit")
     public String editUsers(Model model) {
@@ -145,11 +139,12 @@ public class UserController {
         model.addAttribute("mixes", mixes);
         model.addAttribute("posts", posts);
         model.addAttribute("email", email);
-        model.addAttribute("user", userService.findUserByEmail(email));
+        model.addAttribute("userPreferences", userService.returnUserPreferences(email));
+        model.addAttribute("user", userService.returnUserSummary(email));
         return "HTML/account-main2";
-        // add authenticator email to get specific user logged in
     }
 
+    // Changes user's password
     @PostMapping("/change-password")
     public String changePassword(@Valid @ModelAttribute (name ="password") String password, @ModelAttribute (name ="newPassword") String newPassword, Authentication authentication, Model model, RedirectAttributes redirectAttributes){
 
@@ -165,6 +160,7 @@ public class UserController {
         }
     }
 
+    // Updates user preferences on receiving emails
     @PostMapping("/get-emails")
     public String receiveEmails(@Valid @ModelAttribute (name = "getEmails") boolean getEmails, Authentication authentication) {
         System.out.println(getEmails);

@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostsRepository extends JpaRepository<Posts, Integer> {
+
+    // Find posts by ID
     public Posts findPostsById(Integer id);
 }

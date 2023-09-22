@@ -21,6 +21,7 @@ public class StreamsController {
         this.streamsRepository = streamsRepository;
     }
 
+    // Loads streams to streaming page
     @RequestMapping("/dj-mix")
     public String djMixPage(Model model) {
         Iterable<Streams> streams = streamsRepository.findAll();
@@ -28,6 +29,7 @@ public class StreamsController {
         return "HTML/offthetop2";
     }
 
+    // allows admin to edit streams in repo
     @RequestMapping("/streams-edit")
     public String adminStreamPage(Model model) {
         Iterable<Streams> streams = streamsRepository.findAll();
@@ -36,12 +38,14 @@ public class StreamsController {
         return "HTML/edit-streams";
     }
 
+    // Saves stream to repo
     @PostMapping("/streams-send")
     public String addStreams(@ModelAttribute(name = "streams") Streams streams) {
         streamsRepository.save(streams);
         return "redirect:/streams-edit";
     }
 
+    // Deletes stream from repo
     @RequestMapping("/streams-delete")
     public String processChange(@RequestParam("streamId") Integer streamId) {
         streamsRepository.deleteById(streamId);

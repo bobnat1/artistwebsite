@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface StreamsRepository extends JpaRepository<Streams, Integer> {
 
+    // Finds streams by name
     public Streams findStreamsByName(String name);
 
     @Modifying
